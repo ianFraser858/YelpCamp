@@ -1,35 +1,30 @@
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
-    mongoose = require("mongoose");
+    mongoose = require("mongoose"),
+    Campground = require("./models/campground");
+    // Comment = require("./models/comment"),
+    // User = require("./models/user");
 
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-var Campground = mongoose.model("Campground", campgroundSchema);
-
-Campground.create(
-    {
-    name: "First Campground",
-    image: "https://cdn.pixabay.com/photo/2017/09/26/13/50/rv-2788677__340.jpg",
-    description: "This is the first campground. The best campground in fact"
-    },
-    function(err, campground) {
-        if(err){
-            console.log(err);
-        }
-        else {
-            console.log(campground);
-        }
-    }    
-);
+// Campground.create(
+//     {
+//     name: "First Campground",
+//     image: "https://cdn.pixabay.com/photo/2017/09/26/13/50/rv-2788677__340.jpg",
+//     description: "This is the first campground. The best campground in fact"
+//     },
+//     function(err, campground) {
+//         if(err){
+//             console.log(err);
+//         }
+//         else {
+//             console.log(campground);
+//         }
+//     }    
+// );
 
 app.get("/", function(req, res){
     res.render("landing");
