@@ -2,29 +2,16 @@ var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
-    Campground = require("./models/campground");
+    Campground = require("./models/campground"),
+    seedDB = require("./seeds");
     // Comment = require("./models/comment"),
     // User = require("./models/user");
 
+seedDB();
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-// Campground.create(
-//     {
-//     name: "First Campground",
-//     image: "https://cdn.pixabay.com/photo/2017/09/26/13/50/rv-2788677__340.jpg",
-//     description: "This is the first campground. The best campground in fact"
-//     },
-//     function(err, campground) {
-//         if(err){
-//             console.log(err);
-//         }
-//         else {
-//             console.log(campground);
-//         }
-//     }    
-// );
 
 app.get("/", function(req, res){
     res.render("landing");
@@ -60,12 +47,14 @@ app.get("/campgrounds/new", function(req, res){
     res.render("new.ejs");
 });
 
+// SHOW ROUTE
 app.get("/campgrounds/:id", function(req, res){
-    Campground.findById(req.params.id, function(err, foundCampground) {
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground) {
         if(err){
             console.log(err);
         }
         else {
+            console.log(foundCampground)
             res.render("show", {campground:foundCampground});
         }
     });
