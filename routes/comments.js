@@ -53,7 +53,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 // EDIT COMMENT
 router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
     Comment.findById(req.params.comment_id, function(err, foundComment) {
-        if(err || !foundComment){
+        if(err){
             req.flash("error", "Comment not found");
             res.redirect("back");
         }

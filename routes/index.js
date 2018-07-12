@@ -13,8 +13,10 @@ router.get("/", function(req, res){
 
 // REGISTER
 router.get("/register", function(req, res){
-    res.render("register");
+    res.render("register", {page: 'register'});
 });
+
+
 router.post("/register", function(req, res){
     User.register(new User({username: req.body.username}), req.body.password, function(err, user){
         if(err){
@@ -31,14 +33,21 @@ router.post("/register", function(req, res){
 
 // LOGIN
 router.get("/login", function(req, res) {
-    res.render("login");
+    res.render("login", {page: 'login'});
 });
 
 
-router.post("/login", passport.authenticate("local", {
-    successRedirect: "/campgrounds",
-    failureRedirect: "/login"
-}) ,function(req, res){
+router.post("/login", function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.redirect('/login'); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/campgrounds';
+      delete req.session.redirectTo;
+      res.redirect(redirectTo);
+    });
+  })(req, res, next);
 });
 
 
