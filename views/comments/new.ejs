@@ -1,18 +1,8 @@
-<style>
-    form {
-        width: 30%;
-        margin: 0 auto;
-    }
-    
-    h1 {
-        text-align: center;
-    }
-</style>
 <% include ../partials/header %>
 <div class="container">
     <div class="row">
-        <h1>Add a New Comment to <%= campground.name %></h1>
-        <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+        <h1 id="form-header">Add a New Comment to <%= campground.name %></h1>
+        <form id="form-formatting" action="/campgrounds/<%= campground._id %>/comments" method="POST">
             <div class="form-group">
                 <input class="form-control" type="text" name="comment[text]" placeholder="text">
             </div>
