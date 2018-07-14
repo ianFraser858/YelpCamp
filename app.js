@@ -23,7 +23,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(flash());
 app.set("view engine", "ejs");
+app.locals.moment = require('moment');
 // seedDB();
+
 
 // PASSPORT CONFIG
 app.use(require("express-session")({
