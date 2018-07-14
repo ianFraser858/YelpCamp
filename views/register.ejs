@@ -3,12 +3,12 @@
     <div class="col-md-12 text-center">
         <div class="col-md-12">
             <form class="form-signin" action="/register" method="POST">
-                <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                <img class="img-fluid" id="logo" src="/stylesheets/tent.svg"/>
                 <h1 class="h3 mb-3 font-weight-normal">Sign Up!</h1>
                 <label for="inputUsername" class="sr-only">Email address</label>
-                <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
+                <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
                 <a href="/campgrounds" class="btn btn-lg btn-primary btn-block"> Go Back </a>
             </form>
