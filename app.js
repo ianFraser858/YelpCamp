@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express                 = require("express"),
     app                     = express(),
     bodyParser              = require("body-parser"),
@@ -7,8 +9,6 @@ var express                 = require("express"),
     passportLocalMongoose   = require("passport-local-mongoose"),
     methodOverride          = require("method-override"),
     flash                   =require("connect-flash"),
-    // Campground              = require("./models/campground"),
-    // Comment                 = require("./models/comment"),
     User                    = require("./models/user"),
     seedDB                  = require("./seeds");
 
