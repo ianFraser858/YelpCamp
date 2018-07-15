@@ -24,4 +24,4 @@ To use:
 2. Install MongoDo
 3. Install package.json
 4. Start up MongoDB
-5. run `node appp.js`
+5. run `node app.js`
