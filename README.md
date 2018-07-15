@@ -13,15 +13,18 @@ Features:
 * Dynamic comment section
 * Awesome landing page
 
-Things to add, maybe someday?
-* Image upload rather than relying on URLs
-* Profile page
-* Better Google Maps API handling
-* Multiple pictures for a campsite
-
 To use:
 1. Download repository
 2. Install MongoDo
 3. Install package.json
 4. Start up MongoDB
 5. run `node app.js`
+
+
+Things to add, maybe someday?
+* Image upload rather than relying on URLs
+* Profile page
+* Better Google Maps API handling
+* Multiple pictures for a campsite
+
+
