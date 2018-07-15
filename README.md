@@ -7,7 +7,7 @@ Uses:
 * Node.js with Express
 * MongoDB
 
-Feautures:
+Features:
 * Login systen
 * Location input for campsites using Google Maps API
 * Dynamic comment section
@@ -18,3 +18,10 @@ Things to add, maybe someday?
 * Profile page
 * Better Google Maps API handling
 * Multiple pictures for a campsite
+
+To use:
+1. Download repository
+2. Install MongoDo
+3. Install package.json
+4. Start up MongoDB
+5. run `node appp.js`
