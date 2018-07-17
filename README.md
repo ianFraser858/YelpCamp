@@ -15,7 +15,7 @@ Features:
 
 To use:
 1. Download repository
-2. Install MongoDo
+2. Install MongoDB
 3. Install package.json
 4. Start up MongoDB
 5. run `node app.js`
