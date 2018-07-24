@@ -39,10 +39,21 @@ router.get("/login", function(req, res) {
 
 router.post("/login", function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
-    if (err) { return next(err); }
-    if (!user) { return res.redirect('/login'); }
+    if (err) { 
+        req.flash("error", err.message);
+        return next(err); 
+        
+    }
+    if (!user) {
+        req.flash("error", "Username or Password is incorrect!");
+        return res.redirect('/login');  
+        
+    }
     req.logIn(user, function(err) {
-      if (err) { return next(err); }
+      if (err) {
+          req.flash("error", err.message);
+          return next(err); 
+      }
       var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/campgrounds';
       delete req.session.redirectTo;
       res.redirect(redirectTo);
